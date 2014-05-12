@@ -1,0 +1,132 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+	 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="5940" height="8410"
+     viewBox="0 0 5940 8410"
+     preserveAspectRatio="xMidYMid meet"
+     onload="init(evt)">
+     <script type="text/ecmascript"><![CDATA[
+      var svg_document, svg_root;
+      var tooltop, tip_box, tip_title, tip_text;
+      var hit_range, hit_quality;
+
+      function init(evt) {
+	 svg_document = evt.target.ownerDocument;
+	 svg_root = document.documentElement;
+
+	 tooltip = svg_document.getElementById('tooltip');
+	 tip_box = svg_document.getElementById('tip_box');
+	 tip_text = svg_document.getElementById('tip_text');
+	 tip_title = svg_document.getElementById('tip_title');
+	 tip_desc = svg_document.getElementById('tip_desc');
+	 hit_range = svg_document.getElementById('hit_range');
+	 hit_quality = svg_document.getElementById('hit_quality');
+
+      };
+
+      function show_tip(evt) {
+	  var x = evt.clientX + window.pageXOffset;
+	  var y = evt.clientY + window.pageYOffset;
+	  var hit = evt.target;
+
+	  var title_text = hit.getElementsByTagName('name').item(0);
+	  if (! title_text ) {
+	     return false;
+	  }
+
+	  title_text = title_text.firstChild.nodeValue;
+	  tip_title.firstChild.nodeValue = title_text;
+	  tip_title.setAttributeNS(null, 'display', 'inline' );
+
+	  var description_text = hit.getElementsByTagName('desc').item(0);
+	  if (description_text) {
+	     description_text = description_text.firstChild.nodeValue;
+	     tip_desc.firstChild.nodeValue = description_text;
+	     tip_desc.setAttributeNS(null, 'display', 'inline' );
+	  }
+	  else {
+	     tip_desc.setAttributeNS(null, 'display', 'none' );
+	  }
+
+	  var range_text = hit.getElementsByTagName('range').item(0);
+	  if (range_text) {
+	     range_text = range_text.firstChild.nodeValue;
+	     hit_range.firstChild.nodeValue = range_text;
+	     hit_range.setAttributeNS(null, 'display', 'inline' );
+	  }
+	  else {
+	     hit_range.setAttributeNS(null, 'display', 'none' );
+	  }
+
+	  var quality_text = hit.getElementsByTagName('quality').item(0);
+	  if (quality_text) {
+	     quality_text = quality_text.firstChild.nodeValue;
+	     hit_quality.firstChild.nodeValue = quality_text;
+	     hit_quality.setAttributeNS(null, 'display', 'inline' );
+	  }
+	  else {
+	     hit_quality.setAttributeNS(null, 'display', 'none' );
+	  }
+
+	  tip_title.firstChild.nodeValue = title_text;
+	  tip_desc.firstChild.nodeValue = description_text;
+	  hit_range.firstChild.nodeValue = range_text;
+	  hit_quality.firstChild.nodeValue = quality_text;
+	  
+	  var box = tip_text.getBBox();
+	  tip_box.setAttributeNS(null, 'width', Number(box.width) + 10);
+	  tip_box.setAttributeNS(null, 'height', Number(box.height) + 10);
+	  
+	  tooltip.setAttributeNS(null, 'transform', 'translate(' + x + ',' + y + ')');
+	  tooltip.setAttributeNS(null, 'visibility', 'visible');
+      };
+
+
+      function hide_tip(evt) {
+	  tooltip.setAttributeNS(null, 'visibility', 'hidden');
+      };
+
+   ]]></script>
+  <defs>
+    <linearGradient id="disorder"
+		    x1="0%" y1="0%"
+		    x2="0%" y2="100%"
+		    spreadMethod="pad">
+      <stop offset="0%"   stop-color="#cccccc" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#666666" stop-opacity="0.6"/>
+    </linearGradient>
+    <radialGradient id="radial-glow"
+            fx="40%"
+            fy="40%"
+            r="55%"
+            spreadMethod="pad">
+        <stop offset="0%"   stop-color="#cccccc" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#cccccc" stop-opacity="0.01" />
+    </radialGradient>
+    <filter id="emboss" >
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+        <feSpecularLighting in="blur" surfaceScale="-3" style="lighting-color:white" specularConstant="1" specularExponent="16" result="spec" kernelUnitLength="1" >
+            <feDistantLight azimuth="45" elevation="45" />
+        </feSpecularLighting>
+        <feComposite in="spec" in2="SourceGraphic" operator="in" result="specOut"/>
+    </filter>
+        <pattern id="binding" x="0" y="0" width="5" height="5"
+        patternUnits="userSpaceOnUse">
+        <path d="M 0 0 Q .25 5 2.5 2.5 T 5 5"
+            style="stroke: black; fill: none;"/>
+        </pattern>
+  </defs>
+  <g transform="translate(10,10) scale(1)">
+<rect x="0" y="0" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="1194" y="0" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="2388" y="0" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="3582" y="0" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="4776" y="0" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="0" y="1194" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="1194" y="1194" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="2388" y="1194" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="3582" y="1194" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="4776" y="1194" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="0" y="2388" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="1194" y="2388" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="2388" y="2388" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="3582" y="2388" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="4776" y="2388" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="0" y="3582" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="1194" y="3582" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="2388" y="3582" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="3582" y="3582" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="4776" y="3582" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="0" y="4776" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="1194" y="4776" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="2388" y="4776" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="3582" y="4776" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="4776" y="4776" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="0" y="5970" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="1194" y="5970" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="2388" y="5970" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="3582" y="5970" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="4776" y="5970" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="0" y="7164" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="1194" y="7164" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="2388" y="7164" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="3582" y="7164" width="1194" height="1194" style="fill:rgb(0,0,255);"/><rect x="4776" y="7164" width="1194" height="1194" style="fill:rgb(0,0,255);"/>   </g>
+   <g id='tooltip' opacity='0.8' visibility='hidden' pointer-events='none'>
+      <rect id='tip_box' x='0' y='5' width='88' height='20' rx='2' ry='2' fill='white' stroke='black'/>
+      <text id='tip_text' x='5' y='20' font-family='Arial' font-size='10'>
+        <tspan id='tip_title' x='5' font-weight='bold' text-decoration="underline"><![CDATA[]]></tspan>
+	    <tspan id='hit_range' x='5' dy='15' fill='red'><![CDATA[]]></tspan>
+        <tspan id='hit_quality' x='5' dy='10' fill='green'><![CDATA[]]></tspan>
+	    <tspan id='tip_desc' x='5' dy='10' fill='blue'><![CDATA[]]></tspan>
+      </text>
+   </g>
+</svg>
